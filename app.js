@@ -71,3 +71,14 @@ app.put('/api/articulos/:id', (req, res) => {
         }
     })
 });
+
+app.delete('/api/articulos/:id', (req, res) => {
+    let sql = 'DELETE FROM articulos WHERE id=?';
+    conexion.query(sql, [req.params.id], function (error, results) {
+        if (error) {
+            throw error;
+        } else {
+            res.send(results);
+        }
+    })
+});
